@@ -1,0 +1,24 @@
+Openssl生成公私钥
+
+#openssl生成私钥
+openssl genpkey -algorithm RSA -out private.key
+
+#openssl生成csr公钥文件
+openssl req -new -key private.key -out CertificateSigningRequest.certSigningRequest  -subj "/emailAddress=olegkrmc6h@mail.com, VM=linh olegkrmc6h@mail.com, C=US"
+#将私钥加进钥匙串
+security import private.key -k ~/Library/Keychains/login.keychain
+
+
+
+#codemagic环境变量
+APP_STORE_CONNECT_ISSUER_ID	Put your App Store Connect Issuer Id here	appstore_credentials
+APP_STORE_CONNECT_KEY_IDENTIFIER	Put your App Store Connect Key Identifier here	appstore_credentials
+APP_STORE_CONNECT_PRIVATE_KEY	Put your App Store Connect Private Key here	appstore_credentials
+CERTIFICATE_PRIVATE_KEY	Put your Certificate Private Key here	appstore_credentials
+BUNDLE_ID	Put your bundle id here	ios_config
+APP_STORE_ID	Put your TestFlight Apple id number (General > App Information > Apple ID)	ios_config
+XCODE_WORKSPACE	Put the name of your workspace here	ios_config
+XCODE_SCHEME	Put the name of your scheme here	ios_config
+CM_BUILD_DIR    当前执行打包的目录也就是xcode编译目录     ios_config
+EMAIL_1 ios_config
+EMAIL_2 ios_config
